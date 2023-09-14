@@ -1,27 +1,29 @@
-import React from "react";
-import Box from "@mui/material/Box";
-import { Typography, Stack, Button, Paper, Divider } from "@mui/material";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Carousel from "react-material-ui-carousel";
 import BathtubIcon from "@mui/icons-material/Bathtub";
 import HotelIcon from "@mui/icons-material/Hotel";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { Button, Stack, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import { usePathname } from "next/navigation";
+import React from "react";
+import Carousel from "react-material-ui-carousel";
 
 const ReusableCard: React.FC<{
-  design_id: number;
-  total_price: number;
+  design_id: number | string;
+  total_price: number | string;
   property_type: string;
   property_name: string;
-  no_of_bathrooms: number;
-  no_of_bedrooms: number;
-  image1: any;
-  image2: any;
-  image3: any;
-  image4: any;
-  image5: any;
+  no_of_bathrooms: number | string;
+  no_of_bedrooms: number | string;
+  images?: any[];
+  image1?: any;
+  image2?: any;
+  image3?: any;
+  image4?: any;
+  image5?: any;
   location: string;
   county: string;
   status: string;
@@ -39,22 +41,24 @@ const ReusableCard: React.FC<{
   image3,
   image4,
   image5,
+  images,
   design_id,
   county,
   status,
   property_size,
   plinth_area,
 }) => {
-  const images = [image1, image2, image3, image4, image5];
+  const pathname = usePathname();
+
   return (
-    <Card sx={{ maxWidth: "100%" }}>
+    <Card sx={{ maxWidth: "350px" }}>
       <Carousel>
-        {images.map((image, index) => (
+        {images?.map((image, index) => (
           <CardMedia key={index} sx={{ height: 250 }} image={image} />
         ))}
       </Carousel>
 
-      <CardContent sx={{ gap: "30px" }}>
+      <CardContent sx={{ gap: "30px", flexGrow: 1 }}>
         <Typography gutterBottom variant="h5" component="div">
           {property_type}
         </Typography>
@@ -129,8 +133,24 @@ const ReusableCard: React.FC<{
           <Typography>{plinth_area}</Typography>{" "}
         </Stack>
       </CardContent>
-      <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography variant="h6">{property_size}</Typography>
+      <CardActions
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignSelf: "end",
+        }}>
+        {pathname === "/admin/designs" ? (
+          <Button
+            sx={{
+              backgroundColor: "red",
+              "&:hover": {
+                backgroundColor: "red",
+              },
+            }}
+            variant="contained">
+            delete
+          </Button>
+        ) : null}
         <Button href={`designs/${design_id}`} variant="contained" size="small">
           Browse Plan
         </Button>
