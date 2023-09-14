@@ -218,16 +218,6 @@ const AddDesign = () => {
           <Typography>Add images here</Typography>
           <input type="file" onChange={handleChange} />
           <Typography>selected images</Typography>
-          {/* {images.length > 0 && (
-            <div>
-              <h3>Selected Images:</h3>
-              {/* <ul>
-                {images.map((index) => (
-                  <li key={index}></li>
-                ))}
-              </ul> */}
-          {/* </div> */}
-          {/* )} */}
         </Stack>
         <Stack>
           <Stack
