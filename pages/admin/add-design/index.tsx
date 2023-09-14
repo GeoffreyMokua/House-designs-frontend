@@ -218,7 +218,6 @@ const AddDesign = () => {
           <Typography>Add images here</Typography>
           <input type="file" onChange={handleChange} />
           <Typography>selected images</Typography>
-          <Typography>{files[0].name}</Typography>
         </Stack>
         <Stack>
           <Stack
