@@ -1,24 +1,20 @@
-import React from "react";
-import Paper from "@mui/material/Paper";
-import InputBase from "@mui/material/InputBase";
-import Divider from "@mui/material/Divider";
-import FilterListIcon from "@mui/icons-material/FilterList";
-import Autocomplete from "@mui/material/Autocomplete";
-import SearchIcon from "@mui/icons-material/Search";
-import DirectionsIcon from "@mui/icons-material/Directions";
-import Dialog from "@mui/material/Dialog";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import TextField from "@mui/material/TextField";
-import Stack from "@mui/material/Stack";
-import CloseIcon from "@mui/icons-material/Close";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
 import ReusableCard from "@/components/surfaces/ReusableCard";
-import { useState } from "react";
-import { Typography, Box, Button } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import SearchIcon from "@mui/icons-material/Search";
+import { Box, Button, Typography } from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import Dialog from "@mui/material/Dialog";
+import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
+import InputBase from "@mui/material/InputBase";
+import Paper from "@mui/material/Paper";
 import Slide from "@mui/material/Slide";
+import Stack from "@mui/material/Stack";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import Toolbar from "@mui/material/Toolbar";
+import React, { useState } from "react";
 
 import TuneIcon from "@mui/icons-material/Tune";
 import { TransitionProps } from "@mui/material/transitions";
@@ -211,14 +207,14 @@ const Main: React.FC<{ designs: any }> = ({ designs }) => {
           display: "grid",
           rowGap: 2,
           columnGap: 2,
-          gridTemplateColumns: "1fr 1fr 1fr",
+          gridTemplateColumns: "1fr 1fr 1fr 1fr",
           "@media(min-width: 600px)": {
             width: "90%",
             alignSelf: "center",
             display: "grid",
             rowGap: 2,
             columnGap: 2,
-            gridTemplateColumns: "1fr 1fr 1fr",
+            gridTemplateColumns: "1fr 1fr 1fr 1fr",
           },
           "@media(max-width: 600px)": {
             width: "90%",
