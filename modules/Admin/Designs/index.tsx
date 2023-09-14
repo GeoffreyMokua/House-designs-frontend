@@ -1,16 +1,21 @@
 import ReusableCard from "@/components/surfaces/ReusableCard";
+import AppSettingsAltOutlinedIcon from "@mui/icons-material/AppSettingsAltOutlined";
 import { Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 const Designs: React.FC<{ designs: any }> = ({ designs }) => {
-  console.log(designs);
   return (
     <Stack gap={2}>
-      <Typography variant="subtitle1">Designs</Typography>
+      <Stack
+        direction="row"
+        sx={{ display: "flex", justifyContent: "center", p: 5 }}>
+        <Typography variant="subtitle1">Manage Designs?</Typography>
+        <AppSettingsAltOutlinedIcon />
+      </Stack>
       <Stack
         sx={{
           display: "grid",
           gap: 3,
-          gridTemplateColumns: "1fr 1fr",
+          gridTemplateColumns: "1fr 1fr 1fr",
           mb: "auto",
         }}>
         {designs?.map(

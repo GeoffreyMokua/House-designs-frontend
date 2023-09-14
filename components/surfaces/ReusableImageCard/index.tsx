@@ -1,10 +1,10 @@
-import Box from "@mui/material/Box";
 import HotelIcon from "@mui/icons-material/Hotel";
+import Box from "@mui/material/Box";
 
-import { Button, Grid, Typography } from "@mui/material";
 import BathtubIcon from "@mui/icons-material/Bathtub";
-import React from "react";
+import { Button, Grid, Typography } from "@mui/material";
 import Image from "next/image";
+import React from "react";
 
 const ReusableImageCard: React.FC<{
   price: number;
@@ -36,8 +36,8 @@ const ReusableImageCard: React.FC<{
         }}>
         <Box sx={{ width: "100%", height: "60%" }}>
           <Image
-          width={300}
-          height={400}
+            width={300}
+            height={400}
             style={{ width: "100%", height: "100%", borderRadius: "15px" }}
             src={image1}
             alt=""
@@ -48,7 +48,7 @@ const ReusableImageCard: React.FC<{
             width: "100%",
             height: "30%",
             padding: 3,
-            gap: 2,
+            gap: 1,
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
           }}>
@@ -58,7 +58,7 @@ const ReusableImageCard: React.FC<{
               {price}
             </Typography>
           </Box>
-          <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+          <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
             <Typography
               sx={{
                 color: "primary.dark",
