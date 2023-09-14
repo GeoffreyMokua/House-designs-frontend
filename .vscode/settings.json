@@ -1,0 +1,14 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+        "source.organizeImports": true
+    },
+    "eslint.workingDirectories": ["client"],
+    "typescript.disableAutomaticTypeAcquisition": true,
+    "typescript.workspaceSymbols.scope": "currentProject",
+    "files.associations": {
+        "*.tsx": "typescriptreact"
+    }
+}

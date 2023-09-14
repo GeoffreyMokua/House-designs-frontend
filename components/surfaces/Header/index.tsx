@@ -56,7 +56,7 @@ export default function Header(props: Props) {
             <ListItemButton sx={{ textAlign: "center" }}>
               <ListItemText primary={item.name} />
             </ListItemButton>
-          </ListItem>
+            </ListItem>
         ))}
       </List>
     </Box>
@@ -98,6 +98,7 @@ export default function Header(props: Props) {
                 sx={{ color: "#fff" }}>
                 {item.name}
               </Button>
+              
             ))}
           </Box>
         </Toolbar>

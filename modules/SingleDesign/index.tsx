@@ -246,7 +246,7 @@ const SingleDesign: React.FC<{ design: any }> = ({ design }) => {
             </Stack>
           </Stack>
           <Stack sx={{ justifyContent: "space-around" }}>
-            <Stack direction="column">
+            <Stack sx={{ alignItems: "center" }} gap={2} direction="column">
               <LocationOnIcon sx={{ fontSize: "50px" }} />
               <Typography variant="subtitle1">
                 {" "}
