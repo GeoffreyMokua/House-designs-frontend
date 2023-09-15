@@ -1,3 +1,4 @@
+import DeleteModal from "@/modules/Admin/components/DeleteModal";
 import ImageUploadModal from "@/modules/Admin/components/ImageUploadModal";
 import BathtubIcon from "@mui/icons-material/Bathtub";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -47,8 +48,29 @@ const ReusableCard: React.FC<{
 }) => {
   const pathname = usePathname();
   const router = useRouter();
+  const [deleteLoading, setDeleteLoading] = useState(false);
   const [open, setOpen] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [deleteModal, setDeleteModal] = useState<any>(null);
+  const handleCloseDelete = async (id: any) => {
+    setDeleteLoading(true);
+    const res = await axios.delete(
+      `https://house-designs-node-backend.onrender.com/${parseInt(id)}`
+    );
+    console.log(res);
+    if (res) {
+      setDeleteLoading(false);
+      setDeleteModal(null);
+      router.refresh();
+    }
+  };
+  const handleCancelDelete = () => {
+    setDeleteModal(null);
+  };
+  const handleOpenDeleteDialog = (id: any) => {
+    setDeleteModal(id);
+  };
+
   const handleCancel = () => {
     setOpen(null);
   };
@@ -200,7 +222,10 @@ const ReusableCard: React.FC<{
           <Stack direction="row" gap={2} sx={{}}>
             {" "}
             <EditIcon sx={{ color: "primary.dark", cursor: "pointer" }} />
-            <DeleteIcon sx={{ color: "red" }} />
+            <DeleteIcon
+              onClick={() => handleOpenDeleteDialog(design_id)}
+              sx={{ color: "red" }}
+            />
           </Stack>
         ) : null}
 
@@ -220,6 +245,12 @@ const ReusableCard: React.FC<{
         isModalOpen={open}
         handleClose={handleClose}
         handleCancel={handleCancel}
+      />
+      <DeleteModal
+        loading={deleteLoading}
+        isModalOpen={deleteModal}
+        handleClose={handleCloseDelete}
+        handleCancel={handleCancelDelete}
       />
     </Stack>
   );

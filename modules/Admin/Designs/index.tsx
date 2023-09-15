@@ -34,6 +34,7 @@ const Designs: React.FC<{ designs: any }> = ({ designs }) => {
             images,
           }: any) => (
             <ReusableCard
+              key={design_id}
               status={status}
               design_id={design_id}
               county={county}

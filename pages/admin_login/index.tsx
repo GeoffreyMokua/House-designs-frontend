@@ -1,6 +1,5 @@
-import { NextPageWithLayout } from "../page";
-
 import AdminLogin from "../../modules/AdminLogin";
+import { NextPageWithLayout } from "../page";
 
 const AdminLoginPage: NextPageWithLayout = () => {
   return <AdminLogin />;
