@@ -21,7 +21,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: any) => {
   const id = context.params.id;
   const res = await fetch(
-    "https://house-designs-node-backend.onrender.com/designs/" + id
+    `https://house-designs-node-backend.onrender.com/designs/${id}`
   );
   const data = await res.json();
   return {
