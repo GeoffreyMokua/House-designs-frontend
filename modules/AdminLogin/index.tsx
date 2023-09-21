@@ -1,8 +1,10 @@
 import { Button } from "@mui/material";
+import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import * as yup from "yup";
@@ -20,9 +22,11 @@ const schema = yup
   .required();
 
 const AdminLogin = () => {
+  const [error, setError] = useState(null);
   const { register, handleSubmit } = useForm<IFormInput>();
   const router = useRouter();
   const onSubmit = (data: IFormInput) => {
+    setError(null);
     fetch("https://house-designs-node-backend.onrender.com/login", {
       method: "POST",
       headers: {
@@ -32,12 +36,22 @@ const AdminLogin = () => {
         email: data.email,
         pasword: data.password,
       }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        localStorage.setItem("jwtToken", data.token);
-        router.push("/admin");
-      });
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          localStorage.setItem("jwtToken", data.token);
+          router.push("/admin");
+          return;
+        });
+      } else {
+        res.json().then((data) => {
+          setError(data);
+          setInterval(() => {
+            setError(null);
+          }, 3000);
+        });
+      }
+    });
   };
 
   return (
@@ -100,6 +114,13 @@ const AdminLogin = () => {
             // helperText={errors.subject?.message}
           />
         </Stack>
+        {error !== null && (
+          <Stack>
+            <Alert variant="filled" severity="error">
+              {error?.message}
+            </Alert>
+          </Stack>
+        )}
         <Button type="submit" variant="contained">
           Login
         </Button>
