@@ -1,8 +1,10 @@
 import { Button, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
+import { useRouter } from "next/router";
 import Sidebar from "../../../modules/Sidebar";
 import ProtectedRoute from "../protectedRoute";
 const AdminLayout: React.FC<{ children: any }> = ({ children }) => {
+  const router = useRouter();
   return (
     <ProtectedRoute>
       <Stack
@@ -25,7 +27,14 @@ const AdminLayout: React.FC<{ children: any }> = ({ children }) => {
         </Stack>
         <Stack direction="row" gap={1}>
           <Button variant="text">Profile</Button>
-          <Button variant="contained">Logout</Button>
+          <Button
+            onClick={() => {
+              localStorage.clear();
+              router.push("/admin_login");
+            }}
+            variant="contained">
+            Logout
+          </Button>
         </Stack>
       </Stack>
       <Stack
