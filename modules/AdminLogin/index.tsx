@@ -22,11 +22,11 @@ const schema = yup
   .required();
 
 const AdminLogin = () => {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState({ message: "" });
   const { register, handleSubmit } = useForm<IFormInput>();
   const router = useRouter();
   const onSubmit = (data: IFormInput) => {
-    setError(null);
+    setError({ message: "" });
     fetch("https://house-designs-node-backend.onrender.com/login", {
       method: "POST",
       headers: {
@@ -47,7 +47,7 @@ const AdminLogin = () => {
         res.json().then((data) => {
           setError(data);
           setInterval(() => {
-            setError(null);
+            setError({ message: "" });
           }, 3000);
         });
       }
@@ -114,7 +114,7 @@ const AdminLogin = () => {
             // helperText={errors.subject?.message}
           />
         </Stack>
-        {error !== null && (
+        {error.message !== "" && (
           <Stack>
             <Alert variant="filled" severity="error">
               {error?.message}
