@@ -33,14 +33,16 @@ type Contact = {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch("https://smart-designs-backend.onrender.com/designs");
+  const res = await fetch(
+    "https://house-designs-node-backend.onrender.com/designs"
+  );
   const data = await res.json();
   return {
     props: { designs: data.data },
   };
 };
 
-const Index: React.FC<{ designs: any }> = ({ designs }) => {
+const App: React.FC<{ designs: any }> = ({ designs }) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const {
@@ -53,7 +55,7 @@ const Index: React.FC<{ designs: any }> = ({ designs }) => {
   });
 
   const onSubmit: any = (data: any) => {
-    fetch("https://house-designs-node-backend.onrender.com/designs", {
+    fetch("https://house-designs-node-backend.onrender.com/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -387,4 +389,4 @@ const Index: React.FC<{ designs: any }> = ({ designs }) => {
   );
 };
 
-export default Index;
+export default App;
