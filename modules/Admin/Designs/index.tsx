@@ -3,6 +3,7 @@ import AppSettingsAltOutlinedIcon from "@mui/icons-material/AppSettingsAltOutlin
 import { Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 const Designs: React.FC<{ designs: any }> = ({ designs }) => {
+  console.log(designs);
   return (
     <Stack gap={2}>
       <Stack
