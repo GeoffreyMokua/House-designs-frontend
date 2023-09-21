@@ -1,34 +1,23 @@
-import React, { useState } from "react";
-import Typography from "@mui/material/Typography";
-import illustration from "../public/illustration2.png";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
+import Typography from "@mui/material/Typography";
 import Image from "next/image";
+import React, { useState } from "react";
 import Carousel from "react-material-ui-carousel";
 
-import Snackbar from "@mui/material/Snackbar";
-import Link from "next/link";
-import contact from "../public/contacts.jpeg";
-import { Chip, Button, Stack, TextField, Autocomplete } from "@mui/material";
 import Header from "@/components/surfaces/Header";
-import { TypeAnimation } from "react-type-animation";
-import { Paper } from "@mui/material";
-import { useRouter } from "next/router";
-import construction from "../public/construction.jpeg";
-import landing from "../public/landing.jpg";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Button, Stack, TextField } from "@mui/material";
+import Snackbar from "@mui/material/Snackbar";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
 import Footer from "../components/surfaces/Footer";
-import ReusableCard from "@/components/surfaces/ReusableCard";
-import styles from "./styles.module.css";
+import contact from "../public/contacts.jpeg";
+import graduation from "../public/graduationhat.jpeg";
 import home from "../public/home.png";
 import machinery from "../public/machinery.jpeg";
-import graduation from "../public/graduationhat.jpeg";
 import person1 from "../public/person1.jpeg";
 import person2 from "../public/person2.jpeg";
-import OurServices from "@/modules/OurServices";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import styles from "./styles.module.css";
 
 const contactSchema = yup.object({
   name: yup.string().required("Full names are required"),
@@ -44,14 +33,16 @@ type Contact = {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch("https://smart-designs-backend.onrender.com/designs");
+  const res = await fetch(
+    "https://house-designs-node-backend.onrender.com/designs"
+  );
   const data = await res.json();
   return {
     props: { designs: data.data },
   };
 };
 
-const Index: React.FC<{ designs: any }> = ({ designs }) => {
+const App: React.FC<{ designs: any }> = ({ designs }) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const {
@@ -64,7 +55,7 @@ const Index: React.FC<{ designs: any }> = ({ designs }) => {
   });
 
   const onSubmit: any = (data: any) => {
-    fetch("https://smart-designs-backend.onrender.com/contact", {
+    fetch("https://house-designs-node-backend.onrender.com/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -127,7 +118,7 @@ const Index: React.FC<{ designs: any }> = ({ designs }) => {
                 height: "100vh",
                 borderRadius: "10px",
                 width: "100%",
-                backgroundImage: `url(${design.image1})`,
+                backgroundImage: `url(${design.images[0]})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -398,4 +389,4 @@ const Index: React.FC<{ designs: any }> = ({ designs }) => {
   );
 };
 
-export default Index;
+export default App;

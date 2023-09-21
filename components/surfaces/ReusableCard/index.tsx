@@ -55,9 +55,8 @@ const ReusableCard: React.FC<{
   const handleCloseDelete = async (id: any) => {
     setDeleteLoading(true);
     const res = await axios.delete(
-      `https://house-designs-node-backend.onrender.com/${parseInt(id)}`
+      `https://house-designs-node-backend.onrender.com/designs/${id}`
     );
-    console.log(res);
     if (res) {
       setDeleteLoading(false);
       setDeleteModal(null);
@@ -153,14 +152,13 @@ const ReusableCard: React.FC<{
             alignItems: "center",
             justifyContent: "right",
           }}>
-          <Typography
+          <Stack
             sx={{
               color: "primary.dark",
               alignItems: "center",
               display: "flex",
               gap: 1,
-            }}
-            variant="subtitle2">
+            }}>
             {" "}
             <Typography variant="subtitle2" component="span">
               {" "}
@@ -169,15 +167,14 @@ const ReusableCard: React.FC<{
             <Typography variant="subtitle2" component="span">
               {no_of_bedrooms}
             </Typography>
-          </Typography>
-          <Typography
+          </Stack>
+          <Stack
             sx={{
               color: "primary.dark",
               alignItems: "center",
               display: "flex",
               gap: 1,
-            }}
-            variant="subtitle2">
+            }}>
             {" "}
             <Typography variant="subtitle2" component="span">
               {" "}
@@ -186,13 +183,13 @@ const ReusableCard: React.FC<{
             <Typography variant="subtitle2" component="span">
               {no_of_bathrooms}
             </Typography>
-          </Typography>
+          </Stack>
         </Box>
 
         <Typography gutterBottom variant="subtitle1">
           {property_name}
         </Typography>
-        <Typography variant="body1" gap={1} sx={{ display: "flex" }}>
+        <Stack gap={1} sx={{ display: "flex" }}>
           <LocationOnIcon
             sx={{
               fontSize: "20px",
@@ -204,7 +201,7 @@ const ReusableCard: React.FC<{
           <Typography variant="subtitle2">
             {location} , {county}
           </Typography>
-        </Typography>
+        </Stack>
         <Stack direction="row" gap={2} sx={{ marginTop: "10px" }}>
           <Typography sx={{ fontWeight: 600 }}> Plinth area: </Typography>
           <Typography>{plinth_area}</Typography>{" "}

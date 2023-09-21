@@ -2,28 +2,32 @@ import Header from "@/components/surfaces/Header";
 import HotelIcon from "@mui/icons-material/Hotel";
 import Snackbar from "@mui/material/Snackbar";
 
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Footer from "@/components/surfaces/Footer";
-import SquareFootIcon from "@mui/icons-material/SquareFoot";
-import { Stack, TextField, Typography } from "@mui/material";
-import CardContent from "@mui/material/CardContent";
+import { yupResolver } from "@hookform/resolvers/yup";
 import BathtubIcon from "@mui/icons-material/Bathtub";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ChatIcon from "@mui/icons-material/Chat";
-import { Card, CardHeader, CardActions, Button } from "@mui/material";
-import Image from "next/image";
-import React from "react";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
-import Carousel from "react-material-ui-carousel";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import SquareFootIcon from "@mui/icons-material/SquareFoot";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardHeader,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+import CardContent from "@mui/material/CardContent";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import Carousel from "react-material-ui-carousel";
 import * as yup from "yup";
 
 const Transition = React.forwardRef(function Transition(
@@ -68,7 +72,7 @@ const SingleDesign: React.FC<{ design: any }> = ({ design }) => {
   } = useForm<Contact>({
     resolver: yupResolver(contactSchema),
   });
-
+  console.log(design);
   const onSubmit: any = (data: any) => {
     fetch("https://smart-designs-backend.onrender.com/contact", {
       method: "POST",
@@ -157,7 +161,7 @@ const SingleDesign: React.FC<{ design: any }> = ({ design }) => {
                 marginRight: "auto",
                 marginLeft: "auto",
               }}>
-              {[
+              {/* {[
                 design.image1,
                 design.image2,
                 design.image13,
@@ -188,7 +192,7 @@ const SingleDesign: React.FC<{ design: any }> = ({ design }) => {
                     alt={image}
                   />
                 </Stack>
-              ))}
+              ))} */}
             </Carousel>
             <Stack
               sx={{
@@ -267,7 +271,7 @@ const SingleDesign: React.FC<{ design: any }> = ({ design }) => {
                 sx={{ backgroundColor: "primary.dark" }}
               />
               <CardContent>
-                {[
+                {/* {[
                   design.feature1,
                   design.feature2,
                   design.feature3,
@@ -278,7 +282,7 @@ const SingleDesign: React.FC<{ design: any }> = ({ design }) => {
                     <CheckCircleOutlineIcon />
                     <Typography variant="h6">{feature}</Typography>
                   </Stack>
-                ))}
+                ))} */}
                 <Stack
                   sx={{
                     width: "100%",

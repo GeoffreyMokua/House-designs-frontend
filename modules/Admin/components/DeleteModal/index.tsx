@@ -32,6 +32,7 @@ const DeleteModal: React.FC<IDeleteModal> = ({
   handleClose,
   handleCancel,
 }) => {
+  console.log(isModalOpen);
   return (
     <div>
       <Dialog
