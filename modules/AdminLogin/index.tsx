@@ -3,7 +3,6 @@ import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import * as yup from "yup";
@@ -40,16 +39,6 @@ const AdminLogin = () => {
         router.push("/admin");
       });
   };
-
-  useEffect(() => {
-    // Check if the user is authenticated (e.g., by verifying the JWT token in local storage)
-    const isAuthenticated = localStorage.getItem("jwtToken");
-
-    if (!isAuthenticated) {
-      // If not authenticated, redirect to the login page
-      router.push("/admin");
-    }
-  }, []);
 
   return (
     <Stack
